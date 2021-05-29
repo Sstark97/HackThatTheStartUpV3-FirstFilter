@@ -4,7 +4,11 @@ const firstItem = allData.filter(data => data.last_name === 'Nuwe').length
 
 const secondItem = allData.filter(data => data.last_name === 'Nuwe')[0].id.replace(/\D/g,'')
 
-const thirdItemData = allData.filter(data => !data.pet)[0].ip.split('.').map(number => parseInt(number,10));
+const thirdItemData = allData
+                        .filter(data => !data.pet)
+                        .map(data => data.ip.split('.')
+                        .map(ips => parseInt(ips,10)))
+                        .map(ips => ips[0]);
 
 const thirdItem = Math.max(...thirdItemData);
 
